@@ -48,7 +48,7 @@ class ServiceLocation(models.Model):
 class ServiceInfo(models.Model):
     """Service Data for Seattle Food Bank and Meal Programs."""
 
-    location = models.ForeignKey(ServiceLocation, related_name='program-info')
+    location = models.ForeignKey(ServiceLocation, related_name='data')
     program_type = models.CharField(
         max_length=255,
         choices=LOCATION_TYPE
