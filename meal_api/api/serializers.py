@@ -7,8 +7,8 @@ class InfoSerializer(serializers.ModelSerializer):
         fields = ('program_type', 'requirements', 'meal', 'day' 'from_hour', 'to_hour')
 
 class LocationSerializer(serializers.ModelSerializer):
-    hours = InfoSerializer(many=True, read_only=True)
+    data = InfoSerializer(many=True, read_only=True)
 
     class Meta:
         model = ServiceLocation
-        fields = ('name', 'address', 'latitude', 'longitude')
+        fields = ('name', 'address', 'latitude', 'longitude', 'data')
