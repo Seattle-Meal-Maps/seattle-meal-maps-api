@@ -33,7 +33,8 @@ DAY = [
 
 @python_2_unicode_compatible
 class ServiceLocation(models.Model):
-    """Model for Food Bank and Meal Programs."""
+    """Location Data for Seattle Food Bank and Meal Programs."""
+
     name = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=1000, blank=True)
     latitude = models.CharField(max_length=255, blank=True)
@@ -45,6 +46,8 @@ class ServiceLocation(models.Model):
 
 @python_2_unicode_compatible
 class ServiceInfo(models.Model):
+    """Service Data for Seattle Food Bank and Meal Programs."""
+
     location = models.ForeignKey(ServiceLocation, related_name='program-info')
     program_type = models.CharField(
         max_length=255,
