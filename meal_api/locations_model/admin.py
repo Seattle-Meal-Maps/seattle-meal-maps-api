@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ServiceLocation, ServiceHours
+from .models import ServiceLocation, ServiceInfo
 
 admin.site.register(ServiceLocation)
-admin.site.register(ServiceHours)
+admin.site.register(ServiceInfo)
