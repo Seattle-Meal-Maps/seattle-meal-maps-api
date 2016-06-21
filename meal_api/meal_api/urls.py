@@ -16,14 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from api.views import LocationViewSet, InfoViewSet
+from api.views import LocationViewSet
 
 router = routers.DefaultRouter()
 router.register(r'api/v1/services', LocationViewSet)
-router.register(r'api/v1/hours', InfoViewSet)
-hours_list = InfoViewSet.as_view({
-    'get': 'list'
-})
 
 data_list = LocationViewSet.as_view({
     'get': 'list'
