@@ -19,8 +19,8 @@ from rest_framework import routers
 from api.views import DataViewSet, HoursViewSet
 
 router = routers.DefaultRouter()
-router.register(r'services', DataViewSet)
-router.register(r'hours', HoursViewSet)
+router.register(r'api/services', DataViewSet)
+router.register(r'api/hours', HoursViewSet)
 hours_list = HoursViewSet.as_view({
     'get': 'list'
 })
