@@ -6,7 +6,7 @@ class InfoSerializer(serializers.ModelSerializer):
         model = ServiceInfo
         fields = ('program_type', 'requirements', 'meal', 'day' 'from_hour', 'to_hour')
 
-class ServiceSerializer(serializers.ModelSerializer):
+class LocationSerializer(serializers.ModelSerializer):
     hours = InfoSerializer(many=True, read_only=True)
 
     class Meta:
