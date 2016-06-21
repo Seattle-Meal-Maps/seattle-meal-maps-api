@@ -21,7 +21,7 @@ MEAL_TYPE = [
     ('Snack', 'Snack')]
 
 DAY = [
-    ('ALL', 'ALL'),
+    ('EVERYDAY', 'EVERYDAY'),
     ('Monday', 'Monday'),
     ('Tuesday', 'Tuesday'),
     ('Wednesday', 'Wednesday'),
@@ -36,27 +36,30 @@ class ServiceLocation(models.Model):
     """Model for Food Bank and Meal Programs."""
     name = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=1000, blank=True)
+    latitude = models.CharField(max_length=255, blank=True)
+    longitude = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+@python_2_unicode_compatible
+class ServiceInfo(models.Model):
+    location = models.ForeignKey(ServiceLocation, related_name='program-info')
     program_type = models.CharField(
         max_length=255,
         choices=LOCATION_TYPE
-    )
-    requirements = models.CharField(
-        max_length=255,
-        choices=SERVICE_REQUIREMENTS,
-        default='OPEN TO ALL'
     )
     meal = models.CharField(
         max_length=255,
         choices=MEAL_TYPE,
         default='N/A'
     )
-    def __str__(self):
-        return self.name
-
-
-@python_2_unicode_compatible
-class ServiceHours(models.Model):
-    location = models.ForeignKey(ServiceLocation, related_name='hours')
+    requirements = models.CharField(
+        max_length=255,
+        choices=SERVICE_REQUIREMENTS,
+        default='OPEN TO ALL'
+    )
     day = models.CharField(
         max_length=255,
         choices=DAY,
