@@ -1,1 +1,1 @@
-web: gunicorn meal_api/meal_api.wsgi --log-file -
+web: python src/manage.py runserver localhost:8000
