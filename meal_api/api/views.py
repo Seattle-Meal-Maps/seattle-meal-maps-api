@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from api.serializers import ServiceSerializer, HourSerializer
-from locations_model.models import ServiceLocation, ServiceHours
+from api.serializers import ServiceSerializer, InfoSerializer
+from locations_model.models import ServiceLocation, ServiceInfo
 # Create your views here.
 
 class DataViewSet(viewsets.ReadOnlyModelViewSet):
@@ -11,5 +11,5 @@ class DataViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ServiceSerializer
 
 class HoursViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = ServiceHours.objects.all()
-    serializer_class = HourSerializer
+    queryset = ServiceInfo.objects.all()
+    serializer_class = InfoSerializer
