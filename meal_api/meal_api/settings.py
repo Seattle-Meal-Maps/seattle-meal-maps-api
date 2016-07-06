@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'locations_model',
     'rest_framework',
     'corsheaders',
+    'multiselectfield'
 ]
 
 MIDDLEWARE_CLASSES = [
