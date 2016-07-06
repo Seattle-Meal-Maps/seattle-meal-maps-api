@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from multiselectfield import MultiSelectField
 
 LOCATION_TYPE = [('food bank', 'Food Bank'), ('meal program', 'Meal Program')]
+
 SERVICE_REQUIREMENTS = [
     ('all', 'OPEN TO ALL'),
     ('women 18+', 'WOMEN 18 AND OLDER'),
@@ -11,7 +13,14 @@ SERVICE_REQUIREMENTS = [
     ('men 55+', 'OPEN TO MEN 55+'),
     ('women and children', 'WOMEN AND CHILDREN ONLY'),
     ('22 and younger', 'YOUTH 22 AND YOUNGER'),
-    ('60+', 'OPEN TO AGES 60+'), ]
+    ('60+', 'OPEN TO AGES 60+'),
+    ]
+
+ADDITIONAL_REQIREMENTS = [
+    ('N/A', 'N/A'),
+    ('Photo ID', 'Photo ID'),
+    ('Proof of Address', 'Proof of Address')
+]
 
 MEAL_TYPE = [
     ('N/A', 'N/A'),
@@ -58,10 +67,16 @@ class ServiceInfo(models.Model):
         choices=MEAL_TYPE,
         default='N/A'
     )
-    requirements = models.CharField(
+    population = models.CharField(
         max_length=255,
         choices=SERVICE_REQUIREMENTS,
         default='OPEN TO ALL'
+    )
+    requirements = MultiSelectField(
+        choices=ADDITIONAL_REQIREMENTS,
+        max_choices=10,
+        max_length=255,
+        default='N/A'
     )
     day = models.CharField(
         max_length=255,
